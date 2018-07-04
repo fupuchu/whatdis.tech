@@ -1,11 +1,10 @@
 var React = require("react");
+var Wrapper = require('./Wrapper.jsx');
 
 class SubmitTerm extends React.Component {
   render() {
     return (
-      <html>
-        <head />
-        <body style={{ fontFamily: 'sans-serif'}}>
+      <Wrapper>
         <h1>{this.props.msg}</h1>
           <div>
               <form action='/submit-term' method='POST'>
@@ -23,8 +22,7 @@ class SubmitTerm extends React.Component {
               <input type="submit" />
               </form>
           </div>
-        </body>
-      </html>
+      </Wrapper>
     );
   }
 }

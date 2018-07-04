@@ -1,11 +1,10 @@
 var React = require("react");
+var Wrapper = require('./Wrapper.jsx');
 
 class Category extends React.Component {
   render() {
     return (
-      <html>
-        <head />
-        <body style={{ fontFamily: 'sans-serif'}}>
+      <Wrapper>
         <h1>listing all categories</h1>
           <div>
           {this.props.category.map(category => (
@@ -15,8 +14,7 @@ class Category extends React.Component {
           </div>
           ))}
           </div>
-        </body>
-      </html>
+      </Wrapper>
     );
   }
 }

@@ -1,11 +1,10 @@
-var React = require("react");
+import React from 'react';
+var Wrapper = require('./Wrapper.jsx');
 
 class SingleTerm extends React.Component {
   render() {
     return (
-      <html>
-        <head />
-        <body style={{ fontFamily: 'sans-serif'}}>
+      <Wrapper>
         <h1>Viewing.. single category</h1>
           <div>
           {this.props.singleterm.map(singleterm => (
@@ -24,8 +23,7 @@ class SingleTerm extends React.Component {
               <br />
               <input type="submit" />
               </form>
-        </body>
-      </html>
+        </Wrapper>
     );
   }
 }

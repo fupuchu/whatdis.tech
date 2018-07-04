@@ -1,11 +1,10 @@
 var React = require("react");
+var Wrapper = require('./Wrapper.jsx');
 
 class SingleCategory extends React.Component {
   render() {
     return (
-      <html>
-        <head />
-        <body style={{ fontFamily: 'sans-serif'}}>
+      <Wrapper>
         <h1>Viewing.. single category</h1>
           <div>
           {this.props.onecat.map(onecat => (
@@ -16,8 +15,7 @@ class SingleCategory extends React.Component {
           </div>
             ))}
           </div>
-        </body>
-      </html>
+      </Wrapper>
     );
   }
 }

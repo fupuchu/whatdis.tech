@@ -1,16 +1,14 @@
 var React = require("react");
+var Wrapper = require('./Wrapper.jsx');
 
 class Home extends React.Component {
   render() {
     return (
-      <html>
-        <head />
-        <body style={{ fontFamily: 'sans-serif'}}>
-          <div>
+      <Wrapper>
+        <div>
             <h1>Welcome to whatdis.tech</h1>
           </div>
-        </body>
-      </html>
+      </Wrapper>
     );
   }
 }
