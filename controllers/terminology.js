@@ -9,8 +9,8 @@ module.exports = (db) => {
             }
         })
     }
-    const getAllCategories = (req, response) => {
-        db.term.getAllCat((err, queryRes) => {
+    const listCategoryTerms = (req, response) => {
+        db.term.getCategoryTerms(req.params, (err, queryRes) => {
             if (err) {
                 //render something went wrong
                 response.send('something went wrong')
@@ -19,11 +19,11 @@ module.exports = (db) => {
             }
         })
     }
-    const getSingleCategory = (req, response) => {
-        console.log(req.params.category);
-        db.term.getSingleCat((err, queryRes) => {
+    const listSingleTerm = (req, response) => {
+        console.log('listing single terms with all desc')
+        db.term.getSingleTerm(req.params, (err, queryRes) => {
             if (err) {
-                //render something went wrong
+                //render 404
                 response.send('something went wrong')
             } else {
                 response.send(queryRes.rows)
@@ -32,7 +32,7 @@ module.exports = (db) => {
     }
     return {
         getAllTerminology : getAllTerminology,
-        getAllCategories : getAllCategories,
-        getSingleCategory : getSingleCategory
+        listCategoryTerms : listCategoryTerms,
+        listSingleTerm : listSingleTerm
     }
 }

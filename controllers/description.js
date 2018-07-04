@@ -9,7 +9,17 @@ module.exports = (db) => {
             }
         })
     }
+    const getSingleDescrip = (req, response) => {
+        db.desc.getSingleDesc(req.params, (err, queryRes) => {
+            if (err){
+                response.send(err)
+            } else {
+                response.send(queryRes.rows)
+            }
+        })
+    }
     return {
-        getAllDescrip : getAllDescrip
+        getAllDescrip : getAllDescrip,
+        getSingleDescrip : getSingleDescrip
     }
 }

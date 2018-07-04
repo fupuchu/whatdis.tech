@@ -3,7 +3,13 @@ module.exports = (db) => {
         let queryString = 'SELECT * FROM description WHERE terminology_id = 2;'
         db.query(queryString, cb)
     }
+    let getSingleDesc = (params, cb) => {
+        let queryString = 'SELECT * FROM description WHERE desc_id = $1'
+        let queryValue = [params.descid]
+        db.query(queryString, queryValue, cb)
+    }
     return {
-        getAllDesc : getAllDesc
+        getAllDesc : getAllDesc,
+        getSingleDesc : getSingleDesc
     }
 }

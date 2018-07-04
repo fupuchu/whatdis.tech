@@ -1,6 +1,7 @@
 const pg = require('pg')
 const description = require('../models/description')
 const terminology = require('../models/terminology')
+const category = require('../models/category')
 const secret = require('./secret')
 // const user = require('../models/userreg')
 const config = {
@@ -19,9 +20,10 @@ poolConnect.on('error', function (err) {
 const descModel = description(poolConnect);
 // const userModel = user(poolConnect);
 const termModel = terminology(poolConnect);
-
+const catModel = category(poolConnect);
 module.exports = {
     desc : descModel,
-    term : termModel
+    term : termModel,
+    cat : catModel
     // user : userModel
 }

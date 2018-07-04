@@ -11,5 +11,5 @@ app.use(morgan('dev'))
 require('./routes')(app, db);
 
 
-app.listen(3000)
-console.log('whatdis.tech started on http://localhost:3000');
+app.listen(8080)
+console.log('whatdis.tech started on http://localhost:8080');
