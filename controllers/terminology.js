@@ -24,9 +24,9 @@ module.exports = (db) => {
         db.term.getSingleTerm(req.params, (err, queryRes) => {
             if (err) {
                 //render 404
-                response.send('something went wrong')
+                response.send(err)
             } else {
-                response.send(queryRes.rows)
+                response.status(200).render('singleterm', {singleterm : queryRes.rows})
             }
         })
     }

@@ -5,7 +5,8 @@ module.exports = (db) => {
                 //render something went wrong
                 response.send('something went wrong')
             } else {
-                response.send(queryRes.rows)
+                console.log('listen all categories');
+                response.status(200).render('category', {category : queryRes.rows})
             }
         })
     }
@@ -16,7 +17,9 @@ module.exports = (db) => {
                 //render something went wrong
                 response.send('something went wrong')
             } else {
-                response.send(queryRes.rows)
+                console.log(queryRes.rows);
+                
+                response.status(200).render('singlecategory', {onecat : queryRes.rows})
             }
         })
     }

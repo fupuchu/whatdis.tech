@@ -3,14 +3,14 @@ module.exports = (app, db) => {
     const descriptory = require('./controllers/description')(db)
     const categoree = require('./controllers/category')(db)
     app.get('/', (req,res) => {
-        res.send('you reached the homepage')
+        res.status(200).render('home')
     })
-    
+    //View categories
     app.get('/category', categoree.getAllCategories)
     app.get('/category/:category', categoree.getSingleCategory)
-
-    app.get('/category/:termid/viewall', terminology.listCategoryTerms)
-    app.get('/category/:singleterm/view/', terminology.listSingleTerm)
+    //View terminologies
+    app.get('/:termid/viewall', terminology.listCategoryTerms)
+    app.get('/:singleterm/all/', terminology.listSingleTerm)
 
     app.get('/alldesc', descriptory.getAllDescrip)
     app.get('/description/:descid', descriptory.getSingleDescrip)
