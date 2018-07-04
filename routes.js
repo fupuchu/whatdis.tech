@@ -1,24 +1,21 @@
-module.exports = (app) => {
+module.exports = (app, db) => {
+    const terminology = require('./controllers/terminology')(db)
+    const descriptory = require('./controllers/description')(db)
     app.get('/', (req,res) => {
         res.send('you reached the homepage')
     })
     
-    app.get('/analogy/viewall', (req,res) => {
-        res.send('viewall analogies here')
-    })
-
-    app.get('/analogy/viewsingle', (req,res) =>{
-        res.send('view single analogies')
-    })
+    app.get('/viewall', terminology.getAllTerminology)
     
-    app.get('/categories', (req,res) => {
-        res.send('view categories')
-    })
+    app.get('/categories', terminology.getAllCategories)
 
-    app.get('/viewcategory/:category', (req,res) => {
-        res.send('view single category ' + req.params.category)
-    })
+    app.get('/category/:category', terminology.getSingleCategory)
 
+    app.get('/singledesc', descriptory.getAllDescrip)
+
+    app.get('/category/:category/terminology', (req,res) => {
+        res.send('viewing single ' + req.params.category + ' terminology')
+    })
     app.get('/home/submitdev', (req,res) => {
         res.send('submit new term to webmaster')
     })
