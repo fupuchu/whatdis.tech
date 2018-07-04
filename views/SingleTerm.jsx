@@ -15,6 +15,15 @@ class SingleTerm extends React.Component {
           </div>
             ))}
           </div>
+          <form action='/submit-desc' method='POST'>
+              <input name='terminology_title' type='hidden' value={this.props.terminology_title} />
+              Submit Analogy
+              <br />
+              Description
+              <textarea name="desc_text"></textarea>
+              <br />
+              <input type="submit" />
+              </form>
         </body>
       </html>
     );

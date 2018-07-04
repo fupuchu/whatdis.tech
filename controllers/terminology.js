@@ -22,17 +22,32 @@ module.exports = (db) => {
     const listSingleTerm = (req, response) => {
         console.log('listing single terms with all desc')
         db.term.getSingleTerm(req.params, (err, queryRes) => {
+            // console.log(req.params);
             if (err) {
                 //render 404
                 response.send(err)
             } else {
-                response.status(200).render('singleterm', {singleterm : queryRes.rows})
+                response.status(200).render('singleterm', {
+                    singleterm : queryRes.rows,
+                    terminology_title : req.params.singleterm
+                })
+            }
+        })
+    }
+    const SubmitTerm = (req, response) => {
+        db.term.postTerm(req.body, (err, queryRes) => {
+            if (err) {
+                response.send(err)
+            } else {
+                console.log(req.body);
+                response.status(200).redirect('/category/' + req.body.category_id)
             }
         })
     }
     return {
         getAllTerminology : getAllTerminology,
         listCategoryTerms : listCategoryTerms,
-        listSingleTerm : listSingleTerm
+        listSingleTerm : listSingleTerm,
+        SubmitTerm : SubmitTerm
     }
 }

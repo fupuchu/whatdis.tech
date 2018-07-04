@@ -11,7 +11,7 @@ class Category extends React.Component {
           {this.props.category.map(category => (
           <div key={category.category_id} style={{ backgroundColor: 'lightblue'}}>
             <p>{category.category_name}</p>
-            <a href={'/category/' + category.category_id}>View Term {category.category_name}</a>
+            <a href={'/category/' + category.category_id}>View: {category.category_name}</a>
           </div>
           ))}
           </div>

@@ -15,9 +15,16 @@ module.exports = (db) => {
         let queryValue = [params.singleterm]
         db.query(queryString, queryValue, cb)
     }
+    let postTerm = (params, cb) => {
+        console.log('submitting terminology form');
+        let insertString = 'INSERT INTO terminology (terminology_title, category_id) VALUES ($1,$2)'
+        let insertValues = [params.terminology_title, params.category_id]
+        db.query(insertString, insertValues, cb)
+    }
     return {
         getAllTerm : getAllTerm,
         getCategoryTerms: getCategoryTerms,
-        getSingleTerm : getSingleTerm
+        getSingleTerm : getSingleTerm,
+        postTerm : postTerm
     }
 }
