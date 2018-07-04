@@ -1,0 +1,28 @@
+{
+  "name": "whatdis.tech",
+  "version": "1.0.0",
+  "description": "Vote for the analogy that helped non-tech users understand confusing tech terms.",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fupuchu/whatdis.tech.git"
+  },
+  "keywords": [
+    "express",
+    "sql",
+    "passport"
+  ],
+  "author": "Leon Ho",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fupuchu/whatdis.tech/issues"
+  },
+  "homepage": "https://github.com/fupuchu/whatdis.tech#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "morgan": "^1.9.0"
+  }
+}
