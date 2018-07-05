@@ -11,7 +11,7 @@ module.exports = (db) => {
     }
     let getSingleTerm = (params, cb) => {
         console.log('firing getSingleTerm');
-        let queryString = 'SELECT * FROM terminology INNER JOIN description ON description.terminology_id = terminology.terminology_id WHERE description.terminology_title = $1'
+        let queryString = 'SELECT * FROM terminology INNER JOIN description ON description.terminology_id = terminology.terminology_id WHERE description.terminology_title = $1 ORDER BY description.desc_vote desc'
         let queryValue = [params.singleterm]
         db.query(queryString, queryValue, cb)
     }

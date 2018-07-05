@@ -20,7 +20,6 @@ module.exports = (db) => {
         })
     }
     const listSingleTerm = (req, response) => {
-        console.log('listing single terms with all desc')
         db.term.getSingleTerm(req.params, (err, queryRes) => {
             // console.log(req.params);
             if (err) {
@@ -39,7 +38,6 @@ module.exports = (db) => {
             if (err) {
                 response.send(err)
             } else {
-                console.log(req.body);
                 response.status(200).redirect('/category/' + req.body.category_id)
             }
         })

@@ -8,8 +8,15 @@ module.exports = (db) => {
         let queryValue = [params.descid]
         db.query(queryString, queryValue, cb)
     }
+    let recommendMe = (params, cb) => {
+        let updateString = 'UPDATE description SET desc_vote = $1 WHERE desc_id = $2'
+        let plusOne = parseInt(params.desc_vote) + 1
+        let updateValue = [plusOne, params.desc_id]
+        db.query(updateString,updateValue, cb)
+    }
     return {
         getAllDesc : getAllDesc,
-        getSingleDesc : getSingleDesc
+        getSingleDesc : getSingleDesc,
+        recommendMe: recommendMe
     }
 }

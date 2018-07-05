@@ -24,15 +24,18 @@ module.exports = (app, db) => {
     app.get('/submit', (req,res) => {
         res.send('submit new term to webmaster')
     })
-
     app.post('/submit-desc', (req, res) => {
         console.log(req.body)
         res.status(200).redirect('/' + req.body.terminology_title + '/all')
     })
 
+    app.post('/reccommendthis', descriptory.recThis)
+
     app.get('/contact-us', (req,res) => {
         res.send('contact us info/about us')
     })
+
+    //test routes
     app.use((req,res) => {
         //replace with renders
       res.status(404).send('error page')

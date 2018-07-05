@@ -16,9 +16,7 @@ module.exports = (db) => {
             if (err) {
                 //render something went wrong
                 response.send('something went wrong')
-            } else {
-                console.log(queryRes.rows);
-                
+            } else {                
                 response.status(200).render('singlecategory', {onecat : queryRes.rows})
             }
         })

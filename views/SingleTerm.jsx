@@ -11,6 +11,12 @@ class SingleTerm extends React.Component {
           <div key={singleterm.desc_id} style={{ backgroundColor: 'lightblue'}}>
             <p>Terminology: {singleterm.desc_text}</p>
             <p>Votes: {singleterm.desc_vote}</p>
+            <form action='/reccommendthis' method='POST'>
+            <input name='term_title' type="hidden" value={singleterm.terminology_title} />
+            <input name='desc_id' type='hidden' value={singleterm.desc_id} />
+            <input name='desc_vote' type='hidden' value={singleterm.desc_vote} />
+              <input type="submit" value="rec this" />
+            </form>
           </div>
             ))}
           </div>

@@ -18,8 +18,19 @@ module.exports = (db) => {
             }
         })
     }
+    const recThis = (req, response) => {
+        console.log("recommend this triggered")
+        db.desc.recommendMe(req.body, (err, queryRes) => {
+            if (err){
+                response.send("????")
+            } else {
+                response.status(200).redirect('/' + req.body.term_title + '/all')
+            }
+        })
+    }
     return {
         getAllDescrip : getAllDescrip,
-        getSingleDescrip : getSingleDescrip
+        getSingleDescrip : getSingleDescrip,
+        recThis : recThis
     }
 }
