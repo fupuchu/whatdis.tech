@@ -9,13 +9,12 @@ class SubmitTerm extends React.Component {
           <div>
               <form action='/submit-term' method='POST'>
               Select Terminology:
-              <select name="category_id">
+              <select style={{ display: 'block'}} name="category_id">
                 <option value="3">frontend</option>
                 <option value="4">backend</option>
                 <option value="1">database</option>
                 <option value="2">web development</option>
               </select>
-              <br />
               Terminology:
               <input name="terminology_title" type="text"/>
               <br />

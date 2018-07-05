@@ -28,9 +28,23 @@ module.exports = (db) => {
             }
         })
     }
+    const submitDescrip = (req, response) => {
+        if (req.body.desc_text.length < 1) {
+            response.send("You need to submit something")
+        } else {
+            db.desc.submitDesc(req.body, (err, queryRes) => {
+                if (err) {
+                    response.send(err)
+                } else {
+                    response.status(200).redirect('/' + req.body.terminology_title + '/all')
+                }
+            })
+        }
+    }
     return {
         getAllDescrip : getAllDescrip,
         getSingleDescrip : getSingleDescrip,
-        recThis : recThis
+        recThis : recThis,
+        submitDescrip : submitDescrip
     }
 }

@@ -14,9 +14,15 @@ module.exports = (db) => {
         let updateValue = [plusOne, params.desc_id]
         db.query(updateString,updateValue, cb)
     }
+    let submitDesc = (params, cb) => {
+        let insertString = 'INSERT INTO description (terminology_title, desc_text) VALUES ($1, $2)'
+        let insertValue = [params.terminology_title, params.desc_text]
+        db.query(insertString, insertValue, cb)
+    }
     return {
         getAllDesc : getAllDesc,
         getSingleDesc : getSingleDesc,
-        recommendMe: recommendMe
+        recommendMe: recommendMe,
+        submitDesc : submitDesc
     }
 }

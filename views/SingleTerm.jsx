@@ -5,7 +5,8 @@ class SingleTerm extends React.Component {
   render() {
     return (
       <Wrapper>
-        <h1>Viewing.. single category</h1>
+        <h1>Viewing.. {this.props.terminology_title}</h1>
+        <a href={'/category/' + this.props.category_id}>Go Back</a>
           <div>
           {this.props.singleterm.map(singleterm => (
           <div key={singleterm.desc_id} style={{ backgroundColor: 'lightblue'}}>
@@ -15,7 +16,7 @@ class SingleTerm extends React.Component {
             <input name='term_title' type="hidden" value={singleterm.terminology_title} />
             <input name='desc_id' type='hidden' value={singleterm.desc_id} />
             <input name='desc_vote' type='hidden' value={singleterm.desc_vote} />
-              <input type="submit" value="rec this" />
+              <input className='btn' type="submit" value="rec this" />
             </form>
           </div>
             ))}

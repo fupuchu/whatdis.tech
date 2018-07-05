@@ -21,15 +21,25 @@ module.exports = (db) => {
     }
     const listSingleTerm = (req, response) => {
         db.term.getSingleTerm(req.params, (err, queryRes) => {
-            // console.log(req.params);
-            if (err) {
-                //render 404
-                response.send(err)
+            console.log(req.params)
+            if (queryRes.rows.length < 1) {
+                if (err) {
+                    response.send(err)
+                } else {
+                    db.term.defaultDesc(req.params, (err, queryRes) => {
+                        response.status(200).redirect(req.originalUrl)
+                    })
+                }
             } else {
-                response.status(200).render('singleterm', {
-                    singleterm : queryRes.rows,
-                    terminology_title : req.params.singleterm
-                })
+                if (err) {
+                    response.send(err)
+                } else {
+                    response.status(200).render('singleterm', {
+                        singleterm : queryRes.rows,
+                        terminology_title : req.params.singleterm,
+                        category_id : queryRes.rows[0].category_id
+                    })
+                }
             }
         })
     }

@@ -11,7 +11,7 @@ module.exports = (db) => {
     }
     let getSingleTerm = (params, cb) => {
         console.log('firing getSingleTerm');
-        let queryString = 'SELECT * FROM terminology INNER JOIN description ON description.terminology_id = terminology.terminology_id WHERE description.terminology_title = $1 ORDER BY description.desc_vote desc'
+        let queryString = 'SELECT * FROM terminology INNER JOIN description ON description.terminology_title = terminology.terminology_title WHERE description.terminology_title = $1 ORDER BY description.desc_vote desc'
         let queryValue = [params.singleterm]
         db.query(queryString, queryValue, cb)
     }
@@ -21,10 +21,18 @@ module.exports = (db) => {
         let insertValues = [params.terminology_title, params.category_id]
         db.query(insertString, insertValues, cb)
     }
+    let defaultDesc = (params, cb) => {
+        console.log('no desc detected, putting a default one')
+        console.log('params')
+        let insertString = 'INSERT INTO description (terminology_title, desc_text) VALUES ($1, $2)'
+        let insertValues = [params.singleterm, 'No analogies here! Submit yours now!']
+        db.query(insertString,insertValues, cb)
+    }
     return {
         getAllTerm : getAllTerm,
         getCategoryTerms: getCategoryTerms,
         getSingleTerm : getSingleTerm,
-        postTerm : postTerm
+        postTerm : postTerm,
+        defaultDesc: defaultDesc
     }
 }
