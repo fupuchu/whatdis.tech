@@ -14,9 +14,9 @@ module.exports = (db) => {
     const LoginController = (req, response) => {
         db.user.Login(req.body, (err, queryRes) => {
             console.log(queryRes.rows)
-            let userid = queryRes.rows[0].userid
+            // let userid = queryRes.rows[0].userid
             if (queryRes.rows < 1){
-                response.status(304).redirect('/Login')
+                response.status(200).render('Login', {msg: 'Invalid Details'})
             } else {
                 let session_key = sha512(secrets.salt.key + queryRes.rows[0].userid)
 

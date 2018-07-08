@@ -6,12 +6,13 @@ class Login extends React.Component {
     return (
       <Wrapper>
           <h1>Login</h1>
+          <h6 className='red-text'>{this.props.msg}</h6>
             <form action='/login' method='POST'>
-            <label>Email:</label>
-            <input type="email" name='email' />
-            <label>Password:</label>
-            <input type="password" name='password' />
-            <input className='btn orange' type="submit" />
+              <label>Email:</label>
+              <input type="email" name='email' />
+              <label>Password:</label>
+              <input type="password" name='password' />
+              <input className='btn orange' type="submit" />
             </form>
         </Wrapper>
     );

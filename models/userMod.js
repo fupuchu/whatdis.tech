@@ -20,7 +20,7 @@ module.exports = (db) => {
         let insertQuery = 'UPDATE users SET session = $1 WHERE userid = $2'
         let insertValue = [params, params2]
         console.log('trying to update')
-        // db.query(insertQuery, insertValue)
+        db.query(insertQuery, insertValue)
     }
     // const AuthQuery = (db) => {
     //     let sessionQuery = 'SELECT session FROM users WHERE session_id = $1'
