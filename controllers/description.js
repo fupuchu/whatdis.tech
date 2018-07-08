@@ -19,7 +19,8 @@ module.exports = (db) => {
         })
     }
     const recThis = (req, response) => {
-        if (req.cookies.is_logged_in == 'false') {
+        console.log(req.cookies)
+        if (req.cookies.is_logged_in == undefined) {
             response.status(200).render('Registration', {msg : 'You need to Register or Login to vote'})
         } else {
             db.desc.checkVote(req, (err, queryRes) => {
@@ -27,7 +28,8 @@ module.exports = (db) => {
                     console.log('you cannot vote')
                     response.status(200).render('Error', {
                         msg : 'You can only vote once',
-                        link: '/' + req.body.term_title + '/all'
+                        link: '/' + req.body.term_title + '/all',
+                        linkMsg : 'Go Back'
                     })
                 } else {
                     console.log('you can vote')
@@ -50,16 +52,24 @@ module.exports = (db) => {
         }
     }
     const submitDescrip = (req, response) => {
-        if (req.body.desc_text.length < 1) {
-            response.send("You need to submit something")
-        } else {
-            db.desc.submitDesc(req.body, (err, queryRes) => {
-                if (err) {
-                    response.send(err)
-                } else {
-                    response.status(200).redirect('/' + req.body.terminology_title + '/all')
-                }
+        if (req.cookies.is_logged_in == undefined){
+            response.render('Error', {
+                msg : 'You need to be logged in to submit a description',
+                link : '/registration',
+                linkMsg : 'Register'
             })
+        } else {
+            if (req.body.desc_text.length < 1) {
+                response.send("You need to submit something")
+            } else {
+                db.desc.submitDesc(req.body, (err, queryRes) => {
+                    if (err) {
+                        response.send(err)
+                    } else {
+                        response.status(200).redirect('/' + req.body.terminology_title + '/all')
+                    }
+                })
+            }
         }
     }
     const voteOnce = (req,response) => {

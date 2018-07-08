@@ -6,7 +6,7 @@ class Error extends React.Component {
     return (
       <Wrapper>
           <h2>{this.props.msg}</h2>
-          <a className='btn red' href={this.props.link}>Go Back</a>
+          <a className='btn red' href={this.props.link}>{this.props.linkMsg}</a>
     </Wrapper>
     );
   }

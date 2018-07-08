@@ -7,7 +7,7 @@ class SingleCategory extends React.Component {
       <Wrapper>
         <h1>{this.props.title.toUpperCase()}</h1>
         <a href='/category' className='btn red'>Go Back</a>
-        <h4>Submit your terminologies here</h4>
+        <h4>Submit your terminologies here!</h4>
         <a href="/submitterm" className="btn orange">
         Submit Your Terminology
         </a>

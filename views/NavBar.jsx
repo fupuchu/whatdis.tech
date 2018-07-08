@@ -13,7 +13,7 @@ class NavBar extends React.Component {
             <li><a href="/category">Categories</a></li>
             <li><a href="/registration">Register</a></li>
             <li><a href="/login">Login</a></li>
-            <li><a href="/login">Logout</a></li>
+            <li><a href="/logout">Logout</a></li>
           </ul>
         </div>
         </div>
@@ -22,6 +22,7 @@ class NavBar extends React.Component {
       <li><a href="/category">Categories</a></li>
             <li><a href="/registration">Register</a></li>
             <li><a href="/login">Login</a></li>
+            <li><a href="/logout">Logout</a></li>
       </ul>
       </div>
     );

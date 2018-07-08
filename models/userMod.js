@@ -16,14 +16,17 @@ module.exports = (db) => {
         let loginValues = [params.email, hashbrowns]
         db.query(loginQuery, loginValues, cb)
     }
-    const AuthSession = (db) => {
-        let insertQuery = 'INSERT INTO users (session)'
+    const AuthSession = (params, params2, db) => {
+        let insertQuery = 'UPDATE users SET session = $1 WHERE userid = $2'
+        let insertValue = [params, params2]
+        console.log('trying to update')
+        // db.query(insertQuery, insertValue)
     }
-    const AuthQuery = (db) => {
-        let sessionQuery = 'SELECT session FROM users WHERE session_id = $1'
-        let getDBsession = '1234'
-        db.query(sessionQuery, getDBsession, cb)
-    }
+    // const AuthQuery = (db) => {
+    //     let sessionQuery = 'SELECT session FROM users WHERE session_id = $1'
+    //     let getDBsession = '1234'
+    //     db.query(sessionQuery, getDBsession, cb)
+    // }
     return {
         Registration : Registration,
         Login : Login,
