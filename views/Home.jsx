@@ -7,6 +7,7 @@ class Home extends React.Component {
       <Wrapper>
         <div>
             <h1>Welcome to whatdis.tech</h1>
+            <a className="waves-effect waves-light btn-small" href="/category">View Categories</a>
           </div>
       </Wrapper>
     );

@@ -1,6 +1,6 @@
 import React from 'react'
-import Navbar from './navbar.jsx'
-import Footer from './footer.jsx'
+var NavBar = require('./NavBar.jsx')
+// var Footer = require('/Footer.jsx')
 
 class Wrapper extends React.Component {
   render() {
@@ -17,6 +17,7 @@ class Wrapper extends React.Component {
         <link rel="stylesheet" href="main.css" />
         </head>
   		<body>
+        <NavBar />
   			<div className='container'>
               {this.props.children}
             </div>

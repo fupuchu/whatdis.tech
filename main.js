@@ -10,6 +10,7 @@ const app = express();
 
 const reactEngine = require('express-react-views').createEngine();
 app.set('views', __dirname + '/views');
+app.set('public', __dirname + '/public');
 app.set('view engine', 'jsx');
 app.engine('jsx', reactEngine);
 
@@ -19,7 +20,6 @@ app.use(methodOverride('_method'));
 app.use(cookieParser());
 
 require('./routes')(app, db);
-
 
 app.listen(8080)
 console.log('whatdis.tech started on http://localhost:8080');

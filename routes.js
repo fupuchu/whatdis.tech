@@ -2,6 +2,8 @@ module.exports = (app, db) => {
     const terminology = require('./controllers/terminology')(db)
     const descriptory = require('./controllers/description')(db)
     const categoree = require('./controllers/category')(db)
+    const userHandler = require('./controllers/userCon')(db)
+
     app.get('/', (req,res) => {
         res.status(200).render('home')
     })
@@ -14,6 +16,22 @@ module.exports = (app, db) => {
 
     app.get('/alldesc', descriptory.getAllDescrip)
     app.get('/description/:descid', descriptory.getSingleDescrip)
+    
+    //user registration routes
+    app.get('/registration', (req, res) => {
+        res.status(200).render('registration')
+    })
+    app.get('/login', (req,res) => {
+        res.status(200).render('login')
+    })
+
+    app.post('/register', userHandler.RegisterMe)
+    app.post('/login', userHandler.LoginController)
+    app.get('/logout', (req,res) => {
+        res.clearCookie('userid')
+        res.clearCookie('is_logged_in')
+        res.redirect('/')
+    })
 
 
     app.get('/submitterm', (req,res) => {
@@ -25,7 +43,6 @@ module.exports = (app, db) => {
         res.send('submit new term to webmaster')
     })
     app.post('/submit-desc', descriptory.submitDescrip)
-
     app.post('/reccommendthis', descriptory.recThis)
 
     app.get('/contact-us', (req,res) => {

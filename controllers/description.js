@@ -19,7 +19,7 @@ module.exports = (db) => {
         })
     }
     const recThis = (req, response) => {
-        console.log("recommend this triggered")
+        console.log("user upvoted")
         db.desc.recommendMe(req.body, (err, queryRes) => {
             if (err){
                 response.send("????")
