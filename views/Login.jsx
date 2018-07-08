@@ -11,7 +11,7 @@ class Login extends React.Component {
             <input type="email" name='email' />
             <label>Password:</label>
             <input type="password" name='password' />
-            <input type="submit" />
+            <input className='btn orange' type="submit" />
             </form>
         </Wrapper>
     );

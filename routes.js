@@ -27,9 +27,11 @@ module.exports = (app, db) => {
 
     app.post('/register', userHandler.RegisterMe)
     app.post('/login', userHandler.LoginController)
+    //clear all cookies when logged out
     app.get('/logout', (req,res) => {
         res.clearCookie('userid')
         res.clearCookie('is_logged_in')
+        res.clearCookie('sessionToken')
         res.redirect('/')
     })
 

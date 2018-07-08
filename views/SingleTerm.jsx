@@ -6,30 +6,42 @@ class SingleTerm extends React.Component {
     return (
       <Wrapper>
         <h1>Viewing.. {this.props.terminology_title}</h1>
-        <a href={'/category/' + this.props.category_id}>Go Back</a>
+        <a href={'/category/' + this.props.category_id} className='btn red'>Go Back</a>
+
+
+        <div className="row">
+          <form action='/submit-desc' method='POST'>
+              <input name='terminology_title' type='hidden' value={this.props.terminology_title} />
+              <h6>Submit Analogy</h6>
+              <span>Description</span>
+              <textarea name="desc_text"></textarea>
+              <br />
+              <input className='btn orange' type="submit" />
+          </form>
+          </div>
+
           <div>
           {this.props.singleterm.map(singleterm => (
-          <div key={singleterm.desc_id} style={{ backgroundColor: 'lightblue'}}>
-            <p>Terminology: {singleterm.desc_text}</p>
-            <p>Votes: {singleterm.desc_vote}</p>
-            <form action='/reccommendthis' method='POST'>
-            <input name='term_title' type="hidden" value={singleterm.terminology_title} />
-            <input name='desc_id' type='hidden' value={singleterm.desc_id} />
-            <input name='desc_vote' type='hidden' value={singleterm.desc_vote} />
-              <input className='btn' type="submit" value="rec this" />
-            </form>
+          <div key={singleterm.desc_id} className='row'>
+            <div className="col s12 m12">
+              <div className="card">
+                <div className="card-content">
+                    <span className='card-title'>{singleterm.desc_text}</span>
+                    <p>Votes: {singleterm.desc_vote}</p>
+                </div>
+                <div className="card-action">
+                    <form action='/reccommendthis' method='POST'>
+                    <input name='term_title' type="hidden" value={singleterm.terminology_title} />
+                    <input name='desc_id' type='hidden' value={singleterm.desc_id} />
+                    <input name='desc_vote' type='hidden' value={singleterm.desc_vote} />
+                      <input className='btn blue' type="submit" value="rec this" />
+                    </form>
+                  </div>
+                </div>
+              </div>
           </div>
             ))}
           </div>
-          <form action='/submit-desc' method='POST'>
-              <input name='terminology_title' type='hidden' value={this.props.terminology_title} />
-              Submit Analogy
-              <br />
-              Description
-              <textarea name="desc_text"></textarea>
-              <br />
-              <input type="submit" />
-              </form>
         </Wrapper>
     );
   }

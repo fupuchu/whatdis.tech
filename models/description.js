@@ -19,10 +19,22 @@ module.exports = (db) => {
         let insertValue = [params.terminology_title, params.desc_text]
         db.query(insertString, insertValue, cb)
     }
+    let uniqueVote = (params, cb) => {
+        let insertString = 'INSERT INTO user_has_vote (userid, terminology_id) VALUES ($1,$2)'
+        let insertValues = [params.cookies.userid, params.body.desc_id]
+        db.query(insertString, insertValues, cb)
+    }
+    let checkVote = (params, cb) => {
+        let queryString = 'SELECT * FROM user_has_vote WHERE userid = $1 AND terminology_id = $2'
+        let queryValue = [params.cookies.userid, params.body.desc_id]
+        db.query(queryString, queryValue, cb)
+    }
     return {
         getAllDesc : getAllDesc,
         getSingleDesc : getSingleDesc,
         recommendMe: recommendMe,
-        submitDesc : submitDesc
+        submitDesc : submitDesc,
+        uniqueVote : uniqueVote,
+        checkVote : checkVote
     }
 }

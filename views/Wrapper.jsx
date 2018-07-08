@@ -1,6 +1,6 @@
 import React from 'react'
 var NavBar = require('./NavBar.jsx')
-// var Footer = require('/Footer.jsx')
+var Footer = require('./Footer.jsx')
 
 class Wrapper extends React.Component {
   render() {
@@ -14,14 +14,23 @@ class Wrapper extends React.Component {
         <meta property="og:description" content='Vote for the analogy that helped non-tech users understand confusing tech terms.' />
         <meta property="og:type" content="website" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css" />
-        <link rel="stylesheet" href="main.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js" />
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-87DrmpqHRiY8hPLIr7ByqhPIywuSsjuQAfMXAE0sMUpY3BM7nXjf+mLIUSvhDArs" crossOrigin="anonymous" />
         </head>
-  		<body>
+  		<body style={{
+        display: 'flex',
+        minHeight: '100vh',
+        flexDirection: 'column'
+      }}>
         <NavBar />
-  			<div className='container'>
-              {this.props.children}
-            </div>
-  			<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js" />
+          <main style={{
+            flex: '1 0 auto'
+          }}>
+          <div className='container'>
+            {this.props.children}
+          </div>
+          </main>
+        <Footer />
   		</body>
   	</html> );
 

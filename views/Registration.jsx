@@ -6,6 +6,7 @@ class Register extends React.Component {
     return (
       <Wrapper>
           <h1>Registration</h1>
+          <p>{this.props.msg}</p>
             <form action='/register' method='POST'>
             <label>Username:</label>
             <input type="text" name='username' />

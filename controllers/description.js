@@ -19,14 +19,35 @@ module.exports = (db) => {
         })
     }
     const recThis = (req, response) => {
-        console.log("user upvoted")
-        db.desc.recommendMe(req.body, (err, queryRes) => {
-            if (err){
-                response.send("????")
-            } else {
-                response.status(200).redirect('/' + req.body.term_title + '/all')
-            }
-        })
+        if (req.cookies.is_logged_in == 'false') {
+            response.status(200).render('Registration', {msg : 'You need to Register or Login to vote'})
+        } else {
+            db.desc.checkVote(req, (err, queryRes) => {
+                if (queryRes.rows != 0){
+                    console.log('you cannot vote')
+                    response.status(200).render('Error', {
+                        msg : 'You can only vote once',
+                        link: '/' + req.body.term_title + '/all'
+                    })
+                } else {
+                    console.log('you can vote')
+                    db.desc.recommendMe(req.body, (err, queryRes) => {
+                        if (err){
+                            response.send("????")
+                        } else {
+                            db.desc.uniqueVote(req, (err, queryRes) => {
+                                if (err) {
+                                    console.log(err)
+                                } else {
+                                    console.log(queryRes.rows)
+                                }
+                            })
+                            response.status(200).redirect('/' + req.body.term_title + '/all')
+                        }
+                    })
+                }
+            })
+        }
     }
     const submitDescrip = (req, response) => {
         if (req.body.desc_text.length < 1) {
@@ -41,10 +62,21 @@ module.exports = (db) => {
             })
         }
     }
+    const voteOnce = (req,response) => {
+        let cookies = req.cookies
+        db.desc.uniqueVote(cookies, (err,queryRes) => {
+            if (err) {
+               response.send(err) 
+            } else {
+                console.log(queryRes)
+            }
+        })
+    }
     return {
         getAllDescrip : getAllDescrip,
         getSingleDescrip : getSingleDescrip,
         recThis : recThis,
-        submitDescrip : submitDescrip
+        submitDescrip : submitDescrip,
+        voteOnce : voteOnce
     }
 }

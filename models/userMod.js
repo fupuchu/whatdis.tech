@@ -1,5 +1,5 @@
 const sha512 = require('js-sha512')
-var crypto = require('crypto-random-string')
+const secrets = require('../configs/secret')
 
 //generate session key
 
@@ -16,8 +16,17 @@ module.exports = (db) => {
         let loginValues = [params.email, hashbrowns]
         db.query(loginQuery, loginValues, cb)
     }
+    const AuthSession = (db) => {
+        let insertQuery = 'INSERT INTO users (session)'
+    }
+    const AuthQuery = (db) => {
+        let sessionQuery = 'SELECT session FROM users WHERE session_id = $1'
+        let getDBsession = '1234'
+        db.query(sessionQuery, getDBsession, cb)
+    }
     return {
         Registration : Registration,
-        Login : Login
+        Login : Login,
+        AuthSession : AuthSession
     }
 }
