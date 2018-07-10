@@ -3,7 +3,6 @@ const description = require('../models/description')
 const terminology = require('../models/terminology')
 const category = require('../models/category')
 const user = require('../models/userMod')
-const secret = require('./secret')
 const url = require('url');
 
 if (process.env.DATABASE_URL) {
@@ -39,6 +38,7 @@ if (process.env.DATABASE_URL) {
     user: userModel
   }
 } else {
+  const secret = require('./secret')
   const config = {
     user: secret.hideMe.user,
     host: secret.hideMe.host,
