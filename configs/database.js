@@ -4,7 +4,7 @@ const terminology = require('../models/terminology')
 const category = require('../models/category')
 const user = require('../models/userMod')
 const url = require('url');
-
+console.log(process.env.DATABASE_URL)
 if (process.env.DATABASE_URL) {
 
   //we need to take apart the url so we can set the appropriate configs
