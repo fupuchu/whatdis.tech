@@ -1,5 +1,5 @@
 const sha512 = require('js-sha512')
-const secrets = require('../configs/secret')
+
 
 module.exports = (db) => {
     const RegisterMe = (req, response) => {
@@ -18,7 +18,7 @@ module.exports = (db) => {
             if (queryRes.rows < 1){
                 response.status(200).render('Login', {msg: 'Invalid Details'})
             } else {
-                let session_key = sha512(secrets.salt.key + queryRes.rows[0].userid)
+                let session_key = sha512('NO TOUCH' + queryRes.rows[0].userid)
 
                 response.cookie('is_logged_in' , 'true')
                 response.cookie('userid' , queryRes.rows[0].userid)
