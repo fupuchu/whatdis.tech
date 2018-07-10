@@ -8,7 +8,10 @@ class SingleTerm extends React.Component {
         <div className="row">
           <div className="col m6 s12">
           <h1>Viewing {this.props.terminology_title}</h1>
-          <a href={'/category/' + this.props.category_id} className='btn red'>Go Back</a>
+          <a href={'/category/' + this.props.category_id} className='btn red'>
+          <i className="fal fa-angle-left material-icons left"></i>
+          Go Back
+          </a>
           </div>
         </div>
         <div className="row">
