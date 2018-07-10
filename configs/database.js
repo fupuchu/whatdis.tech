@@ -38,12 +38,11 @@ if (process.env.DATABASE_URL) {
     user: userModel
   }
 } else {
-  const secret = require('./secret')
   const config = {
-    user: secret.hideMe.user,
-    host: secret.hideMe.host,
-    database: secret.hideMe.database,
-    port: secret.hideMe.port
+    user: 'fupuchu',
+    host: '127.0.0.1',
+    database: 'whatdis.tech.dev',
+    port: 5432
   }
   const poolConnect = new pg.Pool(config)
 

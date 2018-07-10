@@ -44,25 +44,34 @@ module.exports = (db) => {
         })
     }
     const SubmitTerm = (req, response) => {
-        db.term.checkTerm(req.body, (err, queryRes) => {
-            if (queryRes.rows == '') {
-                db.term.postTerm(req.body, (err, queryRes) => {
-                    if (err) {
-                        response.send(err)
-                    } else {
-                        response.status(200).redirect('/category/' + req.body.category_id)
-                    }
-                })     
+        if (req.cookies.is_logged_in == 'true'){
+            if (req.body.terminology_title == '') {
+                response.status(200).render('SubmitTerm', {
+                    warn: 'You need to submit something first!'
+                }
+            )
             } else {
-                response.status(200).render('Error', {
-                    msg: 'Error! Terminology already exists.',
-                    link: '/category',
-                    linkMsg: 'Go Back'
+                db.term.checkTerm(req.body, (err, queryRes) => {
+                    if (queryRes.rows == '') {
+                        db.term.postTerm(req.body, (err, queryRes) => {
+                            if (err) {
+                                response.send(err)
+                            } else {
+                                response.status(200).redirect('/category/' + req.body.category_id)
+                            }
+                        })     
+                    } else {
+                        response.status(200).render('Error', {
+                            msg: 'Error! Terminology already exists.',
+                            link: '/category',
+                            linkMsg: 'Go Back'
+                        })
+                    }
                 })
             }
-            
-            
-        })
+        } else {
+            response.status(200).render('Register') 
+        }
     }
     return {
         getAllTerminology : getAllTerminology,

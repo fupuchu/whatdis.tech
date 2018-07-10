@@ -1,5 +1,4 @@
 const sha512 = require('js-sha512')
-const secrets = require('../configs/secret')
 
 //generate session key
 
