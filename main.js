@@ -21,5 +21,6 @@ app.use(express.static('public'));
 
 require('./routes')(app, db)
 
-app.listen(8080)
-console.log('whatdis.tech started on http://localhost:8080')
+const PORT = process.env.PORT || 8080;
+
+const server = app.listen(PORT, () => console.log('~~~ Tuning in to the waves of port '+PORT+' ~~~'));

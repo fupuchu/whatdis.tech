@@ -4,6 +4,7 @@
   "description": "Vote for the analogy that helped non-tech users understand confusing tech terms.",
   "main": "main.js",
   "scripts": {
+    "start": "node main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -12,14 +13,16 @@
   },
   "keywords": [
     "express",
-    "sql",
-    "passport"
+    "sql"
   ],
   "author": "Leon Ho",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/fupuchu/whatdis.tech/issues"
   },
+  "engines" : {
+    "node" : "^9.11.1"
+    },
   "homepage": "https://github.com/fupuchu/whatdis.tech#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
