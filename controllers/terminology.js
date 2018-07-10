@@ -34,7 +34,7 @@ module.exports = (db) => {
                 if (err) {
                     response.send(err)
                 } else {
-                    response.status(200).render('singleterm', {
+                    response.status(200).render('SingleTerm', {
                         singleterm : queryRes.rows,
                         terminology_title : req.params.singleterm,
                         category_id : queryRes.rows[0].category_id

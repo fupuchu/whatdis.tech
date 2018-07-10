@@ -37,7 +37,7 @@ module.exports = (app, db) => {
 
 
     app.get('/submitterm', (req,res) => {
-        res.status(200).render('submitterm', {msg: 'Submit your terminologies'})
+        res.status(200).render('SubmitTerm', {msg: 'Submit your terminologies'})
     })
     app.post('/submit-term', terminology.SubmitTerm)
     // app.get('/category/:category/terminology', descriptory.getSingle)
