@@ -11,7 +11,7 @@ class SubmitTerm extends React.Component {
               Submit Analogy
               <br />
               Description
-              <textarea name="desc_text"></textarea>
+              <textarea name="desc_text" maxLength="50"></textarea>
               <br />
               <input type="submit" />
               </form>

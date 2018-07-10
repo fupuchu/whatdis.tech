@@ -7,7 +7,7 @@ class Home extends React.Component {
       <Wrapper>
         <div>
             <h1>Welcome to whatdis.tech</h1>
-            <p>Help non-tech users get the hang around understanding tech terms and vote for the analogies that helped get your point across</p>
+            <h5>Help non-tech users wrap their head around confusing tech terms and vote for the analogies that helped got your point across</h5>
           </div>
       </Wrapper>
     );

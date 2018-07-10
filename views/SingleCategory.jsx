@@ -5,12 +5,20 @@ class SingleCategory extends React.Component {
   render() {
     return (
       <Wrapper>
+        <div className="row">
+        <div className="col m3">
         <h1>{this.props.title.toUpperCase()}</h1>
         <a href='/category' className='btn red'>Go Back</a>
+        </div>
+        </div>
+        <div className="row">
+        <div className="col">
         <h4>Submit your terminologies here!</h4>
-        <a href="/submitterm" className="btn orange">
+        <a href="/submitterm" className="btn orange left">
         Submit Your Terminology
         </a>
+        </div>
+        </div>
           <div className='row'>
           {this.props.onecat.map(onecat => (
           <div key={onecat.terminology_id} className='col s12 m6'>
