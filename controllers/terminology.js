@@ -44,12 +44,24 @@ module.exports = (db) => {
         })
     }
     const SubmitTerm = (req, response) => {
-        db.term.postTerm(req.body, (err, queryRes) => {
-            if (err) {
-                response.send(err)
+        db.term.checkTerm(req.body, (err, queryRes) => {
+            if (queryRes.rows == '') {
+                db.term.postTerm(req.body, (err, queryRes) => {
+                    if (err) {
+                        response.send(err)
+                    } else {
+                        response.status(200).redirect('/category/' + req.body.category_id)
+                    }
+                })     
             } else {
-                response.status(200).redirect('/category/' + req.body.category_id)
+                response.status(200).render('Error', {
+                    msg: 'Error! Terminology already exists.',
+                    link: '/category',
+                    linkMsg: 'Go Back'
+                })
             }
+            
+            
         })
     }
     return {

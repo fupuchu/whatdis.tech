@@ -28,11 +28,17 @@ module.exports = (db) => {
         let insertValues = [params.singleterm, 'No analogies here! Submit yours now!']
         db.query(insertString,insertValues, cb)
     }
+    let checkTerm = (params, cb) => {        
+        let queryString = 'SELECT * FROM terminology WHERE terminology_title = $1'
+        let queryValue = [params.terminology_title]
+        db.query(queryString, queryValue, cb)
+    }
     return {
         getAllTerm : getAllTerm,
         getCategoryTerms: getCategoryTerms,
         getSingleTerm : getSingleTerm,
         postTerm : postTerm,
-        defaultDesc: defaultDesc
+        defaultDesc: defaultDesc,
+        checkTerm : checkTerm
     }
 }
