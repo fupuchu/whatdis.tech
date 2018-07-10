@@ -5,7 +5,7 @@ module.exports = (app, db) => {
     const userHandler = require('./controllers/userCon')(db)
 
     app.get('/', (req,res) => {
-        res.status(200).send('it works?')
+        res.status(200).render('home')
     })
     //View categories
     app.get('/category', categoree.getAllCategories)

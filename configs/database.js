@@ -2,10 +2,11 @@ const pg = require('pg')
 const description = require('../models/description')
 const terminology = require('../models/terminology')
 const category = require('../models/category')
-const user = require ('../models/userMod')
+const user = require('../models/userMod')
 const secret = require('./secret')
+const url = require('url');
 
-if( process.env.DATABASE_URL ){
+if (process.env.DATABASE_URL) {
 
   //we need to take apart the url so we can set the appropriate configs
 
@@ -21,6 +22,22 @@ if( process.env.DATABASE_URL ){
     database: params.pathname.split('/')[1],
     ssl: true
   }
+  const poolConnect = new pg.Pool(config)
+
+  poolConnect.on('error', function (err) {
+    console.log('idle client error', err.message, err.stack);
+  });
+
+  const descModel = description(poolConnect);
+  const userModel = user(poolConnect);
+  const termModel = terminology(poolConnect);
+  const catModel = category(poolConnect);
+  module.exports = {
+    desc: descModel,
+    term: termModel,
+    cat: catModel,
+    user: userModel
+  }
 } else {
   const config = {
     user: secret.hideMe.user,
@@ -28,21 +45,20 @@ if( process.env.DATABASE_URL ){
     database: secret.hideMe.database,
     port: secret.hideMe.port
   }
-}
+  const poolConnect = new pg.Pool(config)
 
-const poolConnect = new pg.Pool(config)
-
-poolConnect.on('error', function (err) {
+  poolConnect.on('error', function (err) {
     console.log('idle client error', err.message, err.stack);
   });
 
-const descModel = description(poolConnect);
-const userModel = user(poolConnect);
-const termModel = terminology(poolConnect);
-const catModel = category(poolConnect);
-module.exports = {
-    desc : descModel,
-    term : termModel,
-    cat : catModel,
-    user : userModel
+  const descModel = description(poolConnect);
+  const userModel = user(poolConnect);
+  const termModel = terminology(poolConnect);
+  const catModel = category(poolConnect);
+  module.exports = {
+    desc: descModel,
+    term: termModel,
+    cat: catModel,
+    user: userModel
+  }
 }
