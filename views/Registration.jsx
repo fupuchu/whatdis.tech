@@ -25,7 +25,7 @@ class Register extends React.Component {
                   <select name="location" style={{display:'block'}}>
                       <option value="SG">SG</option>
                   </select>
-                  <hr />
+                  <br />
                   <input className='btn orange right'type="submit" />
                   <a className='btn blue' href="/login">Login</a>
                   </form>

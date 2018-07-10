@@ -5,19 +5,23 @@ class SingleTerm extends React.Component {
   render() {
     return (
       <Wrapper>
-        <h1>Viewing.. {this.props.terminology_title}</h1>
-        <a href={'/category/' + this.props.category_id} className='btn red'>Go Back</a>
-
-
         <div className="row">
-          <form action='/submit-desc' method='POST'>
+          <div className="col m6 s12">
+          <h1>Viewing {this.props.terminology_title}</h1>
+          <a href={'/category/' + this.props.category_id} className='btn red'>Go Back</a>
+          </div>
+        </div>
+        <div className="row">
+           <div className="col m6 s12">
+           <form action='/submit-desc' method='POST'>
               <input name='terminology_title' type='hidden' value={this.props.terminology_title} />
               <h6>Submit Analogy</h6>
               <span>Description</span>
-              <textarea name="desc_text"></textarea>
+              <textarea className='input-field' name="desc_text"></textarea>
               <br />
               <input className='btn orange' type="submit" />
           </form>
+           </div>
           </div>
 
           <div>
