@@ -5,7 +5,7 @@ module.exports = (app, db) => {
     const userHandler = require('./controllers/userCon')(db)
 
     app.get('/', (req,res) => {
-        res.status(200).render('home')
+        res.status(200).render('Home')
     })
     //View categories
     app.get('/category', categoree.getAllCategories)
@@ -19,10 +19,10 @@ module.exports = (app, db) => {
     
     //user registration routes
     app.get('/registration', (req, res) => {
-        res.status(200).render('registration')
+        res.status(200).render('Registration')
     })
     app.get('/login', (req,res) => {
-        res.status(200).render('login')
+        res.status(200).render('Login')
     })
 
     app.post('/register', userHandler.RegisterMe)
