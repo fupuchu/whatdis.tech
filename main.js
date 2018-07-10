@@ -21,6 +21,6 @@ app.use(express.static('public'));
 
 require('./routes')(app, db)
 
-const PORT = process.env.PORT || 8080;
+var PORT = process.env.PORT || 8000
 
-const server = app.listen(PORT, () => console.log('~~~ Tuning in to the waves of port '+PORT+' ~~~'));
+app.listen(PORT, () => console.log('~~~ Tuning in to the waves of port '+PORT+' ~~~'));
