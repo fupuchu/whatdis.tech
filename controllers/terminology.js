@@ -70,7 +70,9 @@ module.exports = (db) => {
                 })
             }
         } else {
-            response.status(200).render('Register') 
+            response.status(200).render('Registration', {
+                msg: 'You need to register or login to submit!'
+            }) 
         }
     }
     return {
