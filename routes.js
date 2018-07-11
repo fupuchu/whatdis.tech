@@ -40,7 +40,6 @@ module.exports = (app, db) => {
         res.status(200).render('SubmitTerm', {msg: 'Submit your terminologies'})
     })
     app.post('/submit-term', terminology.SubmitTerm)
-    // app.get('/category/:category/terminology', descriptory.getSingle)
     app.get('/submit', (req,res) => {
         res.send('submit new term to webmaster')
     })
@@ -49,11 +48,5 @@ module.exports = (app, db) => {
 
     app.get('/contact-us', (req,res) => {
         res.send('contact us info/about us')
-    })
-
-    //test routes
-    app.use((req,res) => {
-        //replace with renders
-      res.status(404).send('error page')
     })
   };

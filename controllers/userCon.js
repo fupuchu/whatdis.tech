@@ -13,7 +13,6 @@ module.exports = (db) => {
     }
     const LoginController = (req, response) => {
         db.user.Login(req.body, (err, queryRes) => {
-            console.log(queryRes.rows)
             // let userid = queryRes.rows[0].userid
             if (queryRes.rows < 1){
                 response.status(200).render('Login', {msg: 'Invalid Details'})

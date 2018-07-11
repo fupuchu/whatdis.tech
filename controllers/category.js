@@ -6,7 +6,9 @@ module.exports = (db) => {
                 response.send('something went wrong')
             } else {
                 console.log('listen all categories');
-                response.status(200).render('Category', {category : queryRes.rows})
+                response.status(200).render('Category', {
+                    category: queryRes.rows
+                })
             }
         })
     }
@@ -15,16 +17,16 @@ module.exports = (db) => {
             if (err) {
                 //render something went wrong
                 response.send('something went wrong')
-            } else {                
+            } else {
                 response.status(200).render('SingleCategory', {
-                    onecat : queryRes.rows,
-                    title : queryRes.rows[0].category_name,
+                    onecat: queryRes.rows,
+                    title: queryRes.rows[0].category_name,
                 })
             }
         })
     }
     return {
-        getAllCategories : getAllCategories,
-        getSingleCategory : getSingleCategory
+        getAllCategories: getAllCategories,
+        getSingleCategory: getSingleCategory
     }
 }
