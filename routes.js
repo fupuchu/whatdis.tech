@@ -7,17 +7,16 @@ module.exports = (app, db) => {
     app.get('/', (req,res) => {
         res.status(200).render('Home')
     })
-    //View categories
+
     app.get('/category', categoree.getAllCategories)
     app.get('/category/:category', categoree.getSingleCategory)
-    //View terminologies
+
     app.get('/:termid/viewall', terminology.listCategoryTerms)
     app.get('/:singleterm/all/', terminology.listSingleTerm)
 
     app.get('/alldesc', descriptory.getAllDescrip)
     app.get('/description/:descid', descriptory.getSingleDescrip)
-    
-    //user registration routes
+
     app.get('/registration', (req, res) => {
         res.status(200).render('Registration')
     })
@@ -27,14 +26,13 @@ module.exports = (app, db) => {
 
     app.post('/register', userHandler.RegisterMe)
     app.post('/login', userHandler.LoginController)
-    //clear all cookies when logged out
+
     app.get('/logout', (req,res) => {
         res.clearCookie('userid')
         res.clearCookie('is_logged_in')
         res.clearCookie('sessionToken')
         res.redirect('/')
     })
-
 
     app.get('/submitterm', (req,res) => {
         res.status(200).render('SubmitTerm', {msg: 'Submit your terminologies'})
