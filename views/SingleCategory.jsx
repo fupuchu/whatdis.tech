@@ -9,7 +9,6 @@ class SingleCategory extends React.Component {
         <div className="col m3">
         <h1>{this.props.title.toUpperCase()}</h1>
         <a href='/category' className='btn red'>
-        <i className="fal fa-angle-left material-icons left"></i>
         Go Back
         </a>
         </div>
