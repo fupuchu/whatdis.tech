@@ -4,7 +4,7 @@ var Wrapper = require('./Wrapper.jsx');
 class Category extends React.Component {
   render() {
     return (
-      <Wrapper>
+      <Wrapper loggedIn={this.props._locals.loggedIn}>
         <h3>Viewing Categories</h3>
           <div className='row'>
           {this.props.category.map(category => (

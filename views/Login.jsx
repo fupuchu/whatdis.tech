@@ -4,7 +4,7 @@ var Wrapper = require('./Wrapper.jsx');
 class Login extends React.Component {
   render() {
     return (
-      <Wrapper>
+      <Wrapper loggedIn={this.props._locals.loggedIn}>
           <h6 className='red-text'>{this.props.msg}</h6>
             <form action='/login' method='POST'>
             <div className="row">

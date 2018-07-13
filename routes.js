@@ -8,8 +8,15 @@ module.exports = (app, db) => {
         res.status(200).render('Home')
     })
 
+    /*
+
+        this route is for categories 
+    */
     app.get('/category', categoree.getAllCategories)
     app.get('/category/:category', categoree.getSingleCategory)
+
+
+
 
     app.get('/:termid/viewall', terminology.listCategoryTerms)
     app.get('/:singleterm/all/', terminology.listSingleTerm)

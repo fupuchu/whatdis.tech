@@ -2,8 +2,9 @@ import React from 'react'
 var NavBar = require('./NavBar.jsx')
 var Footer = require('./Footer.jsx')
 
-class DiplayLoginStatus extends React.Component {
+class DiplayLoginStatus extends React.Component {  
   render(){
+    console.log('wrapper', this)
     if (this.props.loggedIn == true) {
       return(
         <div>

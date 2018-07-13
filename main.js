@@ -14,9 +14,10 @@ app.set('view engine', 'jsx')
 app.engine('jsx', reactEngine)
 
 var myLogger = function (req, res, next) {
+    console.log('from main.js', req.cookies)
     if (req.cookies.is_logged_in == 'true') {
         res.locals.loggedIn = true;
-        console.log('middlerware', res.locals);
+        console.log('middleware', res.locals);
     } else {
         res.locals.loggedIn = false;
         console.log('middleware', res.locals);

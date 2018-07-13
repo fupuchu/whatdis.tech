@@ -4,7 +4,7 @@ var Wrapper = require('./Wrapper.jsx');
 class SubmitTerm extends React.Component {
   render() {
     return (
-      <Wrapper>
+      <Wrapper loggedIn={this.props._locals.loggedIn}>
         <h2>Submit your Terminology</h2>
         <h5 className='red-text'>{this.props.warn}</h5>
           <div>

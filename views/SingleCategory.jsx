@@ -4,7 +4,7 @@ var Wrapper = require('./Wrapper.jsx');
 class SingleCategory extends React.Component {
   render() {
     return (
-      <Wrapper>
+      <Wrapper loggedIn={this.props._locals.loggedIn}>
         <div className="row">
         <div className="col m3">
         <h1>{this.props.title.toUpperCase()}</h1>

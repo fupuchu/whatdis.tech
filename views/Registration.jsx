@@ -4,7 +4,7 @@ var Wrapper = require('./Wrapper.jsx');
 class Register extends React.Component {
   render() {
     return (
-      <Wrapper>
+      <Wrapper loggedIn={this.props._locals.loggedIn}>
           <p>{this.props.msg}</p>
           <div class="row">
           <div class="col s12 m6 offset-m3">

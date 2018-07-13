@@ -4,7 +4,7 @@ var Wrapper = require('./Wrapper.jsx');
 class SubmitTerm extends React.Component {
   render() {
     return (
-      <Wrapper>
+      <Wrapper loggedIn={this.props._locals.loggedIn}>
         <div>
         <form action='/reccommendthis' method='POST'>
               <input name='terminology_title' type='hidden' value={this.props.terminology_title} />

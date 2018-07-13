@@ -4,7 +4,7 @@ var Wrapper = require('./Wrapper.jsx');
 class SingleTerm extends React.Component {
   render() {
     return (
-      <Wrapper>
+       <Wrapper loggedIn={this.props._locals.loggedIn}>
         <div className="row">
           <div className="col m6 s12">
           <h1>Viewing {this.props.terminology_title}</h1>
